@@ -1,5 +1,6 @@
 import sys
 import time
+import random
 from scapy.all import ICMP, IP, send, sr1
 
 def enviar_ping(destino, mensaje_cifrado):
@@ -10,7 +11,7 @@ def enviar_ping(destino, mensaje_cifrado):
         paquete = IP(dst=destino) / ICMP() / caracter
         send(paquete, verbose=False)  # Enviar el paquete
         print(f"Sent {i} packets.")  # Imprimir cada vez que se envía un paquete
-        time.sleep(0.2)  # Introducir una pequeña pausa entre envíos
+        time.sleep(random.uniform(0.1, 0.5))  # Retardo aleatorio entre 0.1 y 0.5 segundos
 
     print("Todos los paquetes han sido enviados.")
 
